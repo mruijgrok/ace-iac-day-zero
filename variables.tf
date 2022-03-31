@@ -48,7 +48,7 @@ variable "aws_spoke1_cidr" {
 }
 
 variable "aws_test_instance_size" {
-  default = "t2.micro"
+  default = "t3.micro"
 }
 
 variable "azure_account_name" {
@@ -72,7 +72,7 @@ variable "azure_spoke_instance_size" {
 }
 
 variable "azure_spoke2_region" {
-  default = "Canada Central"
+  default = "UK South"
 }
 
 variable "azure_spoke2_name" {
