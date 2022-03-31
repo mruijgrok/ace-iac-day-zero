@@ -65,6 +65,19 @@ module "azure_spoke_2" {
   transit_gw      = module.aws_transit_1.transit_gateway.gw_name
 }
 
+module "google_spoke_3" {
+  source          = "terraform-aviatrix-modules/mc-spoke/aviatrix"
+  version         = "1.1.0"
+  cloud           = "GCP"
+  account         = var.google_account_name
+  region          = var.google_spoke3_region
+  name            = var.google_spoke3_name
+  cidr            = var.google_spoke3_cidr
+  instance_size   = var.google_spoke_instance_size
+  ha_gw           = var.ha_enabled
+  security_domain = aviatrix_segmentation_security_domain.BU3.domain_name
+  transit_gw      = module.aws_transit_1.transit_gateway.gw_name
+}
 # Multi-Cloud Segmentation
 resource "aviatrix_segmentation_security_domain" "BU1" {
   domain_name = "BU1"
@@ -74,6 +87,12 @@ resource "aviatrix_segmentation_security_domain" "BU1" {
 }
 resource "aviatrix_segmentation_security_domain" "BU2" {
   domain_name = "BU2"
+  depends_on = [
+    module.aws_transit_1
+  ]
+}
+resource "aviatrix_segmentation_security_domain" "BU3" {
+  domain_name = "BU3"
   depends_on = [
     module.aws_transit_1
   ]

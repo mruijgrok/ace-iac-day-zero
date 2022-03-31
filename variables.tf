@@ -90,7 +90,18 @@ variable "azure_test_instance_size" {
 variable "ace_ec2_key_name" {
   default = "ACE"
 }
-
+variable "google_spoke3_region" {
+  default = "europe-west4"
+}
+variable "google_spoke3_name" {
+  default = "ace-iac-spoke3"
+}
+variable "google_spoke3_cidr" {
+  default = "10.1.213.0/24"
+}
+variable "google_spoke_instance_size" {
+  default = "n1-standard-1"
+}
 variable "ha_enabled" {
   type    = bool
   default = false
