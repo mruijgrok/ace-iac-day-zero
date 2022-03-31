@@ -14,6 +14,8 @@ variable "ace_password" {
 variable "aws_account_name" {
   default = "aws-account"
 }
+variable "google_account_name" {
+}
 
 variable "aws_transit_instance_size" {
   default = "t2.micro"
